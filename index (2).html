@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IMÓVEIS MOSQUEIRO - CLASSIFICADOS ONLINE. Anuncie, compre, venda e alugue imóveis na Ilha de Mosqueiro - PA." />
+  <title>IMÓVEIS MOSQUEIRO - CLASSIFICADOS ONLINE</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <div class="announcement-bar">
+      <span>www.imoveismosqueiro.com.br</span>
+      <strong>Classificados imobiliários da Ilha de Mosqueiro - PA</strong>
+      <span>1 anúncio grátis por mês</span>
+    </div>
+
+    <header class="site-header" id="topo">
+      <a class="brand" href="#topo" aria-label="IMÓVEIS MOSQUEIRO - Página inicial">
+        <img src="assets/logo-imoveis-mosqueiro.jpeg" alt="Logo IMÓVEIS MOSQUEIRO - CLASSIFICADOS ONLINE" />
+        <div>
+          <span>IMÓVEIS MOSQUEIRO</span>
+          <small>CLASSIFICADOS ONLINE</small>
+        </div>
+      </a>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="Menu principal">
+        <a href="#destaques">Destaques</a>
+        <a href="#buscar">Buscar por bairro</a>
+        <a href="#planos">Planos</a>
+        <a href="#cadastro">Cadastro</a>
+        <a class="nav-cta" href="#publicar">Anunciar imóvel</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Apresentação do portal">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="hero-copy">
+            <span class="eyebrow">Portal local de imóveis • Ilha de Mosqueiro - PA</span>
+            <h1>Compre, venda, alugue e anuncie imóveis em Mosqueiro.</h1>
+            <p>
+              Um classificado online com visual premium, busca por bairros e anúncios pagos em destaque no topo da página inicial.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#publicar">Postar meu anúncio</a>
+              <a class="btn ghost" href="#buscar">Pesquisar imóveis</a>
+            </div>
+            <div class="trust-row" aria-label="Informações rápidas">
+              <div><strong>1</strong><span>anúncio grátis/mês</span></div>
+              <div><strong>24h</strong><span>planos populares</span></div>
+              <div><strong>30 dias</strong><span>destaque premium</span></div>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-label="Logo e resumo do serviço">
+            <img src="assets/logo-imoveis-mosqueiro.jpeg" alt="Marca IMÓVEIS MOSQUEIRO" />
+            <div class="hero-card-overlay">
+              <span>Destaque seu imóvel</span>
+              <strong>a partir de R$ 3,00</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-panel" id="buscar" aria-labelledby="titulo-busca">
+        <div class="section-heading compact">
+          <span class="eyebrow">Busca rápida</span>
+          <h2 id="titulo-busca">Encontre imóveis por bairro em Mosqueiro</h2>
+          <p>Filtre por bairro, tipo, finalidade e faixa de valor. Os anúncios pagos aparecem primeiro.</p>
+        </div>
+
+        <form class="search-form" id="searchForm">
+          <label>
+            <span>O que você procura?</span>
+            <input type="search" id="searchText" placeholder="Ex.: casa com piscina, terreno, praia..." />
+          </label>
+          <label>
+            <span>Bairro / Praia</span>
+            <select id="searchNeighborhood"></select>
+          </label>
+          <label>
+            <span>Tipo de imóvel</span>
+            <select id="searchType">
+              <option value="">Todos os tipos</option>
+              <option>Casa</option>
+              <option>Apartamento</option>
+              <option>Terreno</option>
+              <option>Chácara/Sítio</option>
+              <option>Ponto comercial</option>
+            </select>
+          </label>
+          <label>
+            <span>Finalidade</span>
+            <select id="searchPurpose">
+              <option value="">Venda, aluguel ou temporada</option>
+              <option>Venda</option>
+              <option>Aluguel</option>
+              <option>Temporada</option>
+            </select>
+          </label>
+          <label>
+            <span>Faixa de valor</span>
+            <select id="searchPrice">
+              <option value="">Qualquer valor</option>
+              <option value="ate-100k">Até R$ 100 mil</option>
+              <option value="100-250k">R$ 100 mil a R$ 250 mil</option>
+              <option value="250-500k">R$ 250 mil a R$ 500 mil</option>
+              <option value="acima-500k">Acima de R$ 500 mil</option>
+            </select>
+          </label>
+          <div class="search-actions">
+            <button class="btn primary" type="submit">Buscar imóveis</button>
+            <button class="btn soft" type="button" id="clearFilters">Limpar filtros</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="featured-section" id="destaques" aria-labelledby="titulo-destaques">
+        <div class="section-heading">
+          <span class="eyebrow">No topo da página inicial</span>
+          <h2 id="titulo-destaques">Anúncios em destaque</h2>
+          <p>Espaço reservado para anúncios pagos, corretores e imobiliárias com maior visibilidade.</p>
+        </div>
+        <div class="cards-grid featured-grid" id="featuredAds"></div>
+      </section>
+
+      <section class="listings-section" aria-labelledby="titulo-anuncios">
+        <div class="section-heading with-controls">
+          <div>
+            <span class="eyebrow">Classificados online</span>
+            <h2 id="titulo-anuncios">Todos os anúncios</h2>
+            <p id="resultsCount">Carregando anúncios...</p>
+          </div>
+          <div class="sort-box">
+            <label for="sortSelect">Ordenar por</label>
+            <select id="sortSelect">
+              <option value="featured">Destaques primeiro</option>
+              <option value="newest">Mais recentes</option>
+              <option value="priceLow">Menor valor</option>
+              <option value="priceHigh">Maior valor</option>
+            </select>
+          </div>
+        </div>
+        <div class="cards-grid" id="adsGrid"></div>
+      </section>
+
+      <section class="plans-section" id="planos" aria-labelledby="titulo-planos">
+        <div class="section-heading centered">
+          <span class="eyebrow">Tabela comercial</span>
+          <h2 id="titulo-planos">Pacotes populares para anunciar</h2>
+          <p>Valores sugeridos para vender anúncios no portal. A contagem inicia após confirmação do pagamento online.</p>
+        </div>
+
+        <div class="plans-grid" id="plansGrid">
+          <article class="plan-card free">
+            <div class="plan-top">
+              <span class="plan-label">Grátis</span>
+              <h3>Cadastro comum</h3>
+            </div>
+            <p class="price">R$ 0<span>/mês</span></p>
+            <ul>
+              <li>1 anúncio gratuito por mês por usuário</li>
+              <li>Exibição na lista normal</li>
+              <li>Ideal para proprietários</li>
+              <li>Sujeito à moderação do portal</li>
+            </ul>
+            <a class="btn soft" href="#cadastro">Cadastrar grátis</a>
+          </article>
+
+          <article class="plan-card popular" data-plan="avulso24h">
+            <div class="plan-top">
+              <span class="plan-label">Popular</span>
+              <h3>Avulso 24 horas</h3>
+            </div>
+            <p class="price">R$ 3<span>/anúncio</span></p>
+            <ul>
+              <li>1 anúncio em destaque por 24 horas</li>
+              <li>Contagem após confirmação do pagamento</li>
+              <li>Indicado para venda rápida</li>
+              <li>Pagamento online via PIX/cartão*</li>
+            </ul>
+            <a class="btn primary choose-plan" href="#publicar" data-plan="Plano Avulso 24h - R$ 3">Escolher plano</a>
+          </article>
+
+          <article class="plan-card" data-plan="cinco24h">
+            <div class="plan-top">
+              <span class="plan-label">Flexível</span>
+              <h3>5 anúncios 24h</h3>
+            </div>
+            <p class="price">R$ 10<span>/pacote</span></p>
+            <ul>
+              <li>5 inserções de anúncios por 24 horas</li>
+              <li>Use mais de um anúncio no mesmo dia</li>
+              <li>Ou repita o mesmo anúncio nos dias preferidos</li>
+              <li>Boa opção para temporada e venda</li>
+            </ul>
+            <a class="btn primary choose-plan" href="#publicar" data-plan="Pacote 5 anúncios 24h - R$ 10">Escolher plano</a>
+          </article>
+
+          <article class="plan-card broker" data-plan="vinte24h">
+            <div class="plan-top">
+              <span class="plan-label">Corretor</span>
+              <h3>20 anúncios 24h</h3>
+            </div>
+            <p class="price">R$ 30<span>/pacote</span></p>
+            <ul>
+              <li>20 anúncios por 24 horas cada</li>
+              <li>Voltado para corretores autônomos</li>
+              <li>Maior volume com custo reduzido</li>
+              <li>Controle de publicações por dia</li>
+            </ul>
+            <a class="btn primary choose-plan" href="#publicar" data-plan="Plano Corretor 20 anúncios 24h - R$ 30">Escolher plano</a>
+          </article>
+
+          <article class="plan-card premium" data-plan="dez30d">
+            <div class="plan-top">
+              <span class="plan-label">Destaque</span>
+              <h3>10 anúncios por 30 dias</h3>
+            </div>
+            <p class="price">R$ 50<span>/mês</span></p>
+            <ul>
+              <li>10 anúncios com destaque por 30 dias</li>
+              <li>Aparecem no topo da página inicial</li>
+              <li>Ideal para pequenos corretores</li>
+              <li>Renovação mensal opcional</li>
+            </ul>
+            <a class="btn primary choose-plan" href="#publicar" data-plan="Destaque 10 anúncios 30 dias - R$ 50">Escolher plano</a>
+          </article>
+
+          <article class="plan-card premium best" data-plan="trinta30d">
+            <div class="ribbon">Melhor custo-benefício</div>
+            <div class="plan-top">
+              <span class="plan-label">Imobiliária</span>
+              <h3>30 anúncios por 30 dias</h3>
+            </div>
+            <p class="price">R$ 100<span>/mês</span></p>
+            <ul>
+              <li>30 anúncios com destaque por 30 dias</li>
+              <li>Exposição premium na página inicial</li>
+              <li>Recomendado para imobiliárias</li>
+              <li>Ótimo para carteira ativa de imóveis</li>
+            </ul>
+            <a class="btn primary choose-plan" href="#publicar" data-plan="Imobiliária 30 anúncios 30 dias - R$ 100">Escolher plano</a>
+          </article>
+
+          <article class="plan-card enterprise" data-plan="cinquenta30d">
+            <div class="plan-top">
+              <span class="plan-label">Master</span>
+              <h3>50 anúncios por 30 dias</h3>
+            </div>
+            <p class="price">R$ 150<span>/mês</span></p>
+            <ul>
+              <li>50 anúncios com destaque por 30 dias</li>
+              <li>Máxima visibilidade na home</li>
+              <li>Para imobiliárias com grande catálogo</li>
+              <li>Prioridade em campanhas do portal</li>
+            </ul>
+            <a class="btn primary choose-plan" href="#publicar" data-plan="Master 50 anúncios 30 dias - R$ 150">Escolher plano</a>
+          </article>
+        </div>
+        <p class="plan-note">*Protótipo visual: a integração real de pagamento pode ser feita com PIX, Mercado Pago, PagSeguro, Stripe ou gateway escolhido.</p>
+      </section>
+
+      <section class="account-section" id="cadastro" aria-labelledby="titulo-cadastro">
+        <div class="section-heading centered">
+          <span class="eyebrow">Área do cliente</span>
+          <h2 id="titulo-cadastro">Cadastre-se e anuncie com segurança</h2>
+          <p>O cliente pode criar cadastro, publicar 1 anúncio grátis por mês e contratar pacotes para aumentar a exposição.</p>
+        </div>
+
+        <div class="form-layout">
+          <form class="glass-form" id="registerForm">
+            <h3>Cadastro do usuário</h3>
+            <div class="form-grid two">
+              <label>
+                <span>Nome completo / Imobiliária</span>
+                <input required id="regName" type="text" placeholder="Ex.: João Silva ou Imobiliária Mosqueiro" />
+              </label>
+              <label>
+                <span>Perfil</span>
+                <select id="regProfile" required>
+                  <option value="Proprietário">Proprietário</option>
+                  <option value="Corretor">Corretor</option>
+                  <option value="Imobiliária">Imobiliária</option>
+                </select>
+              </label>
+              <label>
+                <span>E-mail</span>
+                <input required id="regEmail" type="email" placeholder="seuemail@exemplo.com" />
+              </label>
+              <label>
+                <span>WhatsApp</span>
+                <input required id="regPhone" type="tel" placeholder="(91) 9 0000-0000" />
+              </label>
+            </div>
+            <label class="checkbox-row">
+              <input required type="checkbox" />
+              <span>Aceito os termos de uso, política de moderação e regras de anúncios imobiliários.</span>
+            </label>
+            <button class="btn primary" type="submit">Criar cadastro</button>
+            <div class="form-message" id="registerMessage" role="status"></div>
+          </form>
+
+          <div class="rules-card">
+            <h3>Regras do portal</h3>
+            <ul>
+              <li><strong>Grátis:</strong> 1 anúncio por mês por usuário cadastrado.</li>
+              <li><strong>Pago:</strong> anúncios em destaque no topo e por bairros.</li>
+              <li><strong>Moderação:</strong> fotos, preço, endereço e contato serão revisados.</li>
+              <li><strong>Segurança:</strong> orientações contra golpes e anúncios duplicados.</li>
+            </ul>
+            <div class="mini-dashboard">
+              <span>Saldo demonstrativo</span>
+              <strong id="freeQuotaText">1 anúncio grátis disponível este mês</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="post-section" id="publicar" aria-labelledby="titulo-publicar">
+        <div class="section-heading centered">
+          <span class="eyebrow">Publicação</span>
+          <h2 id="titulo-publicar">Postar anúncio de imóvel</h2>
+          <p>Preencha os dados. Neste modelo, o anúncio entra na página imediatamente para demonstração.</p>
+        </div>
+
+        <form class="glass-form post-form" id="postForm">
+          <div class="form-grid three">
+            <label>
+              <span>E-mail do cadastro</span>
+              <input required id="postEmail" type="email" placeholder="mesmo e-mail do cadastro" />
+            </label>
+            <label>
+              <span>Plano escolhido</span>
+              <select id="postPlan" required>
+                <option value="free">Grátis - 1 anúncio/mês</option>
+                <option value="Plano Avulso 24h - R$ 3">Plano Avulso 24h - R$ 3</option>
+                <option value="Pacote 5 anúncios 24h - R$ 10">Pacote 5 anúncios 24h - R$ 10</option>
+                <option value="Plano Corretor 20 anúncios 24h - R$ 30">Plano Corretor 20 anúncios 24h - R$ 30</option>
+                <option value="Destaque 10 anúncios 30 dias - R$ 50">Destaque 10 anúncios 30 dias - R$ 50</option>
+                <option value="Imobiliária 30 anúncios 30 dias - R$ 100">Imobiliária 30 anúncios 30 dias - R$ 100</option>
+                <option value="Master 50 anúncios 30 dias - R$ 150">Master 50 anúncios 30 dias - R$ 150</option>
+              </select>
+            </label>
+            <label>
+              <span>Finalidade</span>
+              <select id="postPurpose" required>
+                <option>Venda</option>
+                <option>Aluguel</option>
+                <option>Temporada</option>
+              </select>
+            </label>
+            <label>
+              <span>Título do anúncio</span>
+              <input required id="postTitle" type="text" maxlength="80" placeholder="Ex.: Casa com piscina no Murubira" />
+            </label>
+            <label>
+              <span>Tipo de imóvel</span>
+              <select id="postType" required>
+                <option>Casa</option>
+                <option>Apartamento</option>
+                <option>Terreno</option>
+                <option>Chácara/Sítio</option>
+                <option>Ponto comercial</option>
+              </select>
+            </label>
+            <label>
+              <span>Bairro / Praia</span>
+              <select id="postNeighborhood" required></select>
+            </label>
+            <label>
+              <span>Valor</span>
+              <input required id="postPrice" type="number" min="1" placeholder="Ex.: 250000" />
+            </label>
+            <label>
+              <span>Quartos</span>
+              <input id="postRooms" type="number" min="0" placeholder="3" />
+            </label>
+            <label>
+              <span>Área aproximada (m²)</span>
+              <input id="postArea" type="number" min="0" placeholder="120" />
+            </label>
+          </div>
+          <label>
+            <span>Descrição</span>
+            <textarea required id="postDescription" rows="4" placeholder="Descreva localização, diferenciais, documentação, proximidade da praia etc."></textarea>
+          </label>
+          <div class="upload-box">
+            <div>
+              <strong>Fotos do imóvel</strong>
+              <span>Campo demonstrativo. Na versão final, aceite JPG/PNG e envie para o servidor.</span>
+            </div>
+            <input id="postPhotos" type="file" multiple accept="image/*" />
+          </div>
+          <div class="payment-preview" id="paymentPreview">
+            <strong>Plano grátis selecionado.</strong>
+            <span>Seu anúncio ficará na lista normal. Para ficar em destaque, escolha um plano pago.</span>
+          </div>
+          <button class="btn primary large" type="submit">Publicar anúncio</button>
+          <div class="form-message" id="postMessage" role="status"></div>
+        </form>
+      </section>
+
+      <section class="how-it-works" aria-labelledby="titulo-como-funciona">
+        <div class="section-heading centered">
+          <span class="eyebrow">Fluxo recomendado</span>
+          <h2 id="titulo-como-funciona">Como o portal funciona</h2>
+        </div>
+        <div class="steps-grid">
+          <article>
+            <span>1</span>
+            <h3>Cadastro</h3>
+            <p>Cliente, corretor ou imobiliária cria uma conta com e-mail e WhatsApp.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Publicação</h3>
+            <p>O primeiro anúncio do mês pode ser grátis. Para volume ou destaque, o cliente escolhe um pacote.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Pagamento</h3>
+            <p>Após confirmação online, o prazo de 24 horas ou 30 dias começa a ser contado.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Destaque</h3>
+            <p>Anúncios pagos aparecem no topo da home, nas buscas por bairro e com selo dourado.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>IMÓVEIS MOSQUEIRO - CLASSIFICADOS ONLINE</strong>
+        <p>Portal imobiliário local para Ilha de Mosqueiro - Belém/PA.</p>
+      </div>
+      <div>
+        <span>www.imoveismosqueiro.com.br</span>
+        <span>Atendimento via WhatsApp: configurar número oficial</span>
+        <span>© 2026 - Modelo de site</span>
+      </div>
+    </footer>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
